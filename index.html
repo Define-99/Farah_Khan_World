@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>v1.04</title>
+  <title>v1.05</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden; /* ✅ kills scroll */
-  
+      max-height: 100%;
+      overflow: hidden; /* ✅ kill all scroll sources */
     }
 
     canvas {
       display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       max-height: 100vh;
