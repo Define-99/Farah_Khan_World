@@ -8,7 +8,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.physicallyCorrectLights = true;
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.set(2, 1.5, 3);
 camera.lookAt(0, 0, 0);
 
