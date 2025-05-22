@@ -9,13 +9,18 @@ renderer.physicallyCorrectLights = true;
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  100
+);
 camera.position.set(2, 1.5, 3);
 camera.lookAt(0, 0, 0);
 
 // Lights
 scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-const dirLight = new THREE.DirectionalLight(0xffffff, 4);
+const dirLight = new THREE.DirectionalLight(0xffffff, 2.5);
 dirLight.position.set(5, 5, 5);
 scene.add(dirLight);
 
@@ -34,10 +39,30 @@ scene.environment = envMap;
 let model = null;
 
 const loader = new GLTFLoader();
-loader.load('./glb/diamond.glb', (gltf) => {
-  model = gltf.scene;
-  model.scale.set(0.5, 0.5, 0.5);
-  scene.add(model);
+loader.load(
+  './glb/diamond.glb',
+  (gltf) => {
+    model = gltf.scene;
+    model.scale.set(0.5, 0.5, 0.5);
+    scene.add(model);
+  },
+  (xhr) => {
+    console.log(`Loading model: ${(xhr.loaded / xhr.total * 100).toFixed(2)}%`);
+  },
+  (error) => {
+    console.error('An error happened loading the model:', error);
+  }
+);
+
+window.addEventListener('resize', () => {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(window.devicePixelRatio);
 });
 
 function animate() {
