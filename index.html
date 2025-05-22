@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>v1.03</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>v1.04</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* ✅ kills scroll */
+      background: #000;  /* optional: clean backdrop */
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      max-height: 100vh;
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
   <canvas id="threeCanvas"></canvas>
